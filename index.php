@@ -10,16 +10,25 @@
 
 <div id="container">
 	<header>
-        
+            <div class="wrap clearfix">
+                <?php pantomime_sitename(); ?>
+            </div><!-- .wrap.clearfix -->
 	</header>
 	<div id="main" role="main">
-        
+            <div class="wrap clearfix">
+                <section>
+                    <?php get_template_part( 'loop', 'index' ); ?>
+                </section>
+                <aside>
+                    This is aside
+                </aside>
+            </div><!-- .wrap.clearfix -->        
 	</div>
 	<footer>
-        
+            <div class="wrap clearfix">
+                <?php wp_footer(); ?>                
+            </div><!-- .wrap.clearfix -->
 	</footer>
-</div> <!--! end of #container -->
-
-<?php wp_footer(); ?>
+</div> <!-- #container -->
 </body>
 </html>

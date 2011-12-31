@@ -1,4 +1,22 @@
 <?php
+/*
+ * --------------------------------------------------------------------------------------------------------------------------------
+ * THEME OPTIONS FRAMEWORK
+ * 
+ * Made based on Devin Price's Option Framework Theme
+ * http://wptheming.com/options-framework-theme/
+ *
+*/
+if ( !function_exists( 'optionsframework_init' ) ) {
+    define('OPTIONS_FRAMEWORK_URL', TEMPLATEPATH . '/admin/');
+    define('OPTIONS_FRAMEWORK_DIRECTORY', get_bloginfo('template_directory') . '/admin/');
+    
+    require_once (OPTIONS_FRAMEWORK_URL . 'options-framework.php');
+}
+
+
+
+
 
 /*
  * ------------------------------------------------------------------------------------------------------------------------
@@ -25,7 +43,7 @@ function pantomime_pagemeta(){
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) { wp_enqueue_script( 'comment-reply' );}
 
 }
-add_action('wp_head', 'pantomime_pagemeta', 10);
+add_action('wp_head', 'pantomime_pagemeta', 0);
 
 
 
@@ -48,7 +66,7 @@ function pantomime_title(){
 	else 					{ _e('Are You Lost?', 'pantomime'); }
 	echo '</title>';
 }
-add_action('wp_head', 'pantomime_title', 20);
+add_action('wp_head', 'pantomime_title', 3);
 
 
 
@@ -63,7 +81,7 @@ function pantomime_stylesheet(){
 	wp_register_style('pantomime-style', get_bloginfo('template_directory') . '/css/style.css', array(), false, 'screen');
 	wp_enqueue_style('pantomime-style');	
 }
-add_action('wp_head', 'pantomime_stylesheet', 30);
+add_action('wp_head', 'pantomime_stylesheet', 5);
 
 
 
@@ -75,8 +93,181 @@ add_action('wp_head', 'pantomime_stylesheet', 30);
  * 
  */
 function pantomime_javascript(){
-	wp_deregister_script('jquery');
-	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', array(), false, false);
-	wp_enqueue_script('jquery');	
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', array(), false, false );
+	wp_enqueue_script( 'jquery' );	
 }
-add_action('wp_head', 'pantomime_javascript', 40);
+add_action('wp_head', 'pantomime_javascript', 10);
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Sitename
+ * for the sake of SEO, make sure that there is only one headin 1 per page
+ * 
+ */
+function pantomime_sitename(){
+    if (is_home()){
+        echo '
+		<div id="sitename-wrap">
+			<h1 id="sitename">'. get_bloginfo( "name" ) .'</h1>
+			<p>'. get_bloginfo( "description" ) .'</p>
+		</div>
+	';
+    } else {
+        echo '
+		<div id="sitename-wrap">
+			<h2 id="sitename"><a href="'. get_bloginfo( "url" ) .'">'. get_bloginfo( "name" ) .'</a></h2>
+			<p>'. get_bloginfo( "description" ) .'</p>
+		</div>
+	';
+    }
+}
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Content
+ * 
+ */
+function pantomime_content(){
+	?>
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <h2 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <p class="meta">
+                    <?php _e( 'Written by', 'pantomime' ); ?> <span class="fn"><?php the_author_link(); ?></span>
+                    <?php _e( 'on ', 'pantomime' ); ?> <span class="date"><?php the_date(); ?></span>
+                    <?php _e( 'filed under ', 'pantomime' ); ?> <span class="categories"><?php the_category(', '); ?></span>
+                    <?php _e( 'and tagged with', 'pantomime' ); ?> <span class="tags"><?php the_tags(''); ?></span>
+                </p>
+		<?php do_action('pantomime_before_content')?>
+                <div class="content"><?php the_content(__( 'Read More', 'pantomime' )); ?></div>
+		<?php do_action('pantomime_after_content'); ?>
+        </article>	
+	<?
+	do_action('pantomime_after_article');
+}
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Author Box on article page
+ * 
+ */
+function pantomime_author_box(){
+	// Get the author email -> for Gravatar
+	$author_email = get_the_author_meta('user_email');
+		
+	// Get the author description
+	$author_description = get_the_author_meta('description');	
+	?>
+
+	<div id="author-box" class="emboss">
+		<h4 class="section-title"><?php _e('About The Author', 'pantomime'); ?></h4>
+		<?php
+			echo get_avatar($author_email, 50, '');
+			echo '<p>' . get_the_author_link() . ' - ' . $author_description . '</p>';
+		?>
+	</div>
+	
+	<?php	
+}
+
+if (is_single()){
+	add_action('pantomime_after_article', 'pantomime_author_box', 10);	
+}
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Comment
+ * 
+ */
+add_filter('get_comments_number', 'pantomime_comment_count', 0);
+function pantomime_comment_count( $count ) {
+	global $id;
+	$comments_by_type = &separate_comments(get_comments('post_id=' . $id));
+	return count($comments_by_type['comment']);
+}
+
+function pantomime_list_pings($comment, $args, $depth) {
+	$GLOBALS['comment'] = $comment;
+	?>
+	<li id="comment-<?php comment_ID(); ?>">
+		<?php comment_author_link(); ?>
+		<span><?php comment_date('d m y'); ?></span>
+	<?php
+}
+
+function pantomime_comment_item($comment, $args, $depth) {
+	$GLOBALS['comment'] = $comment; ?>
+	<li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">	
+		<div id="div-comment-<?php comment_ID() ?>" class="comment-wrap">
+			<div class="comment-wrap-inside clearfix">
+				<div class="comment-avatar">
+					<?php echo get_avatar($comment, 50, ''); ?>
+				</div>
+				<div class="comment-content">
+					<p class="comment-author"><strong><?php comment_author_link(); ?></strong></p>
+                                        <p class="comment-date"><?php printf( get_comment_time('d F Y')) ?><?php edit_comment_link(__('| Edit', 'pantomime'),'  ','') ?></p>
+					<?php if ($comment->comment_approved == '0') : ?>
+					<p><em><?php _e('Your comment will appear after being approved by admin.', 'pantomime') ?></em> </p>
+					<?php endif; ?>
+					<div class="content">
+                                            <?php comment_text() ?>
+                                        </div>
+					<?php comment_reply_link(array_merge( $args, array('reply_text' => __('Reply', 'pantomime'), 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+				</div>
+			</div>
+		</div><!-- .comment-wrap -->
+	<?php
+}
+
+function pantomime_comment(){
+	if (is_single() || is_page()){
+		comments_template('', true);		
+	}
+}
+add_action('pantomime_after_article', 'pantomime_comment', 50);
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Footer Credit
+ * 
+ */
+function pantomime_credit(){
+	echo '<p id="footer-credit">';
+	_e('<a href="http://outstando.com/pantomime/">Pantomime Theme</a>. Designed &amp; Code-crafted in Bandung, Indonesia', 'pantomime');
+	echo '</p>';
+}
+add_action('wp_footer', 'pantomime_credit', 10);
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Count Number of Queries
+ * 
+ */
+function pantomime_num_queries(){
+	echo '<p id="footer-num-queries">';
+	_e('Generated from '. get_num_queries() .' queries in '. timer_stop(0,3) .' seconds.', 'pantomime');
+	echo '</p>';
+}
+add_action('wp_footer', 'pantomime_num_queries', 20);
