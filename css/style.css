@@ -728,6 +728,29 @@ article .meta{
 }
 
 
+/* Pagination */
+.pagenavi .pages{
+    display:block;
+    margin:0 0 5px;
+    font-style:italic;
+}
+
+.the-navi a,
+.the-navi .current{
+    border:1px solid #dfdfdf;
+    padding:2px 10px;
+    margin:0 5px 0 0;
+}
+
+.the-navi a:hover{
+    border:1px solid #afafaf;
+}
+
+.the-navi .current{
+    background:#efefef;
+}
+
+
 
 
 /* =============================================================================

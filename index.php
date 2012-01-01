@@ -22,7 +22,10 @@
 	<div id="main" role="main">
             <div class="wrap clearfix">
                 <section>
-                    <?php get_template_part( 'loop', 'index' ); ?>
+                    <?php
+                        get_template_part( 'loop', 'index' );
+                        pagenavi();
+                    ?>
                 </section>
                 <aside class="emboss widget-wrap">
                     <ul id="sidebar-main"><?php dynamic_sidebar( 'main-sidebar' ); ?></ul>
