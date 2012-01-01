@@ -762,7 +762,7 @@ add_action( 'widgets_init', 'pantomime_register_sidebar' );
  */
 function pantomime_credit(){
 	echo '<p id="footer-credit">';
-	_e('<a href="http://outstando.com/pantomime/">Pantomime Theme</a>. Designed &amp; Code-crafted in Bandung, Indonesia', 'pantomime');
+	_e('<a href="https://github.com/fikrirasyid/pantomime">Pantomime Theme <sup>(beta)</sup></a>: Designed &amp; Code-crafted by <a href="http://fikrirasyid.com" title="Fikri Rasyid, front end & WordPress theme developer, Bandung Indonesia.">Fikri Rasyid</a> in Bandung, Indonesia', 'pantomime');
 	echo '</p>';
 }
 add_action('wp_footer', 'pantomime_credit', 10);
