@@ -514,7 +514,7 @@ nav .menu ul ul{
    ========================================================================== */
 #main section{
     float:left;
-    width:518px;
+    width:568px;
     padding:20px 40px;
     border:1px solid #efefef;
 
@@ -522,7 +522,7 @@ nav .menu ul ul{
 
 #main aside{
     float:left;
-    width:280px;
+    width:230px;
     padding:20px 40px;
     background:#efefef;
 }
@@ -627,23 +627,23 @@ article .meta{
 
 .comment-content{
     float:left;
-    width:448px;
+    width:498px;
 }
 
 .depth-2 .comment-content{
-    width: 378px;
+    width: 428px;
 }
 
 .depth-3 .comment-content{
-    width: 308px;
+    width: 358px;
 }
 
 .depth-4 .comment-content{
-    width: 238px;
+    width: 288px;
 }
 
 .depth-5 .comment-content{
-    width: 168px;
+    width: 218px;
 }
 
 .comment-author{
