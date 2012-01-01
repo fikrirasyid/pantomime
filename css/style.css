@@ -368,12 +368,31 @@ body, button, input, select, textarea {
 
 /* Link */
 a{
-    color:#960000;
+    color:#666;
     text-decoration:none;
 }
 
-a:hover{
-    text-decoration:underline;
+a:hover,
+article a:hover{
+    color:#bd0000;
+}
+
+.title,
+.title a{
+    color:#000;
+}
+
+.meta a,
+.content a{
+    color:#afafaf;
+    border-bottom:1px solid #afafaf;
+}
+
+
+/* Compatibility with on content shortcodes*/
+.content .bbpBox a /* BlackBird Pie */{
+    background:none;
+    border:none;
 }
 
 /* Clearfix */
