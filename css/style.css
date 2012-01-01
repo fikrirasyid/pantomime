@@ -598,6 +598,14 @@ article .meta{
     padding:0;
 }
 
+.content blockquote{
+    border-left:3px solid #999;
+    margin:0 0 20px;
+    padding:20px 20px 5px 20px;
+    font-style:italic;
+    background:#efefef;
+}
+
 .content .alignleft{
     margin:0 20px 20px 0;
 }
