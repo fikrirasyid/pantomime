@@ -280,7 +280,44 @@ function pantomime_custom_headings(){
 	<?php
     }
 }
-add_action('wp_head', 'pantomime_custom_headings', 6); 
+add_action('wp_head', 'pantomime_custom_headings', 6);
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Custom Scripts fetched from theme options
+ *
+ */
+/* Allow <script> tag to be embedded in theme option's textarea */
+add_action('admin_init','optionscheck_change_santiziation', 100);
+
+function optionscheck_change_santiziation() {
+    remove_filter( 'of_sanitize_textarea', 'of_sanitize_textarea' );
+    add_filter( 'of_sanitize_textarea', 'tp_sanitize_textarea' );
+}
+ 
+function tp_sanitize_textarea($input) {
+    global $allowedposttags;
+      $custom_allowedtags["script"] = array();
+      $custom_allowedtags["style"] = array();
+      
+      $custom_allowedtags = array_merge($custom_allowedtags, $allowedposttags);
+      $output = wp_kses( $input, $custom_allowedtags);
+    return $output;
+}
+
+function pantomime_custom_script_head(){
+	echo of_get_option('pantomime_custom_script_head', '');
+}
+add_action('wp_head', 'pantomime_custom_script_head', 7);
+
+function pantomime_custom_script_foot(){
+	echo of_get_option('pantomime_custom_script_foot', '');
+}
+add_action('wp_footer', 'pantomime_custom_script_foot', 5);
+
 
 
 

@@ -70,9 +70,16 @@ function optionsframework_options() {
 						"id" => "pantomime_favicon",
 						"type" => "upload");	
 
-	$options[] = array( "name" => "Custom Javascript",
-						"desc" => "Paste custom javascript code such as Google Analytics here.",
-						"id" => "pantomime_custom_js",
+	$options[] = array( "name" => "Custom Javascript / Stylesheet on &lt;head&gt;",
+						"desc" => "Paste custom stylesheet / javascript code such as Google Analytics here. The script will be inserted inside &lt;head&gt; area.",
+						"id" => "pantomime_custom_script_head",
+						"std" => "",
+						"type" => "textarea"); 
+
+
+	$options[] = array( "name" => "Custom Javascript on footer",
+						"desc" => "Paste custom javascript code such as Google Analytics here. The script will be inserted on footer area.",
+						"id" => "pantomime_custom_script_foot",
 						"std" => "",
 						"type" => "textarea"); 
 
