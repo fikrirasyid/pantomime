@@ -112,11 +112,21 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Typography",
 						"type" => "heading");
 
-	$pantomime_heading_typography = array("Georgia" => "Georgia","Copse" => "Copse", "Pacifico" => "Pacifico", "Lobster" => "Lobster", "Bangers" => "Bangers", "Kreon" => "Kreon", "Leckerli+One" => "Leckerli One", "Carter+One" => "Carter One");
-	$options[] = array( "name" => "Heading Typography",
+	$pantomime_heading_typography = array(
+                                              "Default" => "Helvetica Neue (Default)",
+                                              "Copse" => "Copse",
+                                              "Pacifico" => "Pacifico",
+                                              "Lobster" => "Lobster",
+                                              "Bangers" => "Bangers",
+                                              "Kreon" => "Kreon",
+                                              "Leckerli+One" => "Leckerli One",
+                                              "Carter+One" => "Carter One"
+                                            );
+	
+        $options[] = array( "name" => "Heading Typography",
 						"desc" => "Select font that will be used for your headings (site name, content title and content headings).",
 						"id" => "pantomime_heading_typography",
-						"std" => "Georgia",
+						"std" => "Helvetica Neue (Default)",
 						"type" => "select",
 						"options" => $pantomime_heading_typography);	
 

@@ -264,6 +264,31 @@ add_action('wp_head', 'pantomime_javascript', 10);
 
 /*
  * ------------------------------------------------------------------------------------------------------------------------
+ * Google Webfont for Headings
+ *
+ */
+function pantomime_custom_headings(){
+    if ( of_get_option( 'pantomime_heading_typography', '' ) != '' && of_get_option('pantomime_heading_typography', '') != 'Default' ){
+	$printed_typography = str_replace( "+", " ", of_get_option( 'pantomime_heading_typography', '' ) );
+	?>
+	<link href='http://fonts.googleapis.com/css?family=<?php echo of_get_option( 'pantomime_heading_typography', '' ); ?>' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		h1, h2, h3, h4, h5, h6{
+			font-family: '<?php echo $printed_typography; ?>';
+		}
+	</style>	
+	<?php
+    }
+}
+add_action('wp_head', 'pantomime_custom_headings', 6); 
+
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
  * Sitename
  * for the sake of SEO, make sure that there is only one headin 1 per page
  * 

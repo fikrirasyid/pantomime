@@ -431,7 +431,7 @@ header .wrap{
 /* Sitename */
 #sitename-wrap{
     width:400px;
-    margin:150px 40px;
+    margin:150px 40px 0;
     float:left;
 }
 
