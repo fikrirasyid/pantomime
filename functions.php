@@ -204,6 +204,7 @@ function pantomime_content(){
  * 
  */
 function pantomime_author_box(){
+	if ( is_single() ) :
 	// Get the author email -> for Gravatar
 	$author_email = get_the_author_meta('user_email');
 		
@@ -219,12 +220,10 @@ function pantomime_author_box(){
 		?>
 	</div>
 	
-	<?php	
+	<?php
+	endif;
 }
-
-if (is_single()){
-	add_action('pantomime_after_article', 'pantomime_author_box', 10);	
-}
+add_action('pantomime_after_article', 'pantomime_author_box', 10);	
 
 
 
