@@ -290,6 +290,44 @@ add_action('wp_head', 'pantomime_custom_headings', 6);
 
 
 
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Color Scheme
+ *
+ */
+function pantomime_color_scheme(){ ?>
+	
+	<style type="text/css">
+		/* Link */
+		a{
+		    color:<?php echo of_get_option( 'pantomime_link_color', '#666666' ); ?> !important;
+		}
+		
+		a:hover,
+		article a:hover{
+		    color:<?php echo of_get_option( 'pantomime_link_color_hover', '#BD0000' ); ?> !important;
+		}
+		
+		.title,
+		.title a{
+		    color:<?php echo of_get_option( 'pantomime_title_color', '#000000' ); ?> !important;
+		}
+		
+		.meta a,
+		.content a{
+		    color:<?php echo of_get_option( 'pantomime_content_link_color', '#AFAFAF' ); ?> !important;
+		}	
+	</style>
+	
+	<?php
+}
+add_action('wp_head', 'pantomime_color_scheme', 6);
+
+
+
+
+
 /*
  * ------------------------------------------------------------------------------------------------------------------------
  * Custom Scripts fetched from theme options

@@ -86,35 +86,31 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Color Scheme",
 						"type" => "heading");
 							
-	$options[] = array( "name" => "Main Background",
-						"desc" => "Main Background. Used on header.",
-						"id" => "pantomime_main_background",
-						"std" => "#555555",
-						"type" => "color");
 
 	$options[] = array( "name" => "Link Color",
 						"desc" => "Main link color. Most of link presented will use this color.",
 						"id" => "pantomime_link_color",
-						"std" => "#000000",
+						"std" => "#666666",
 						"type" => "color");
 
 	$options[] = array( "name" => "Link Hover",
 						"desc" => "Color of hovered link.",
-						"id" => "pantomime_link_hover",
-						"std" => "#960000",
+						"id" => "pantomime_link_color_hover",
+						"std" => "#BD0000",
 						"type" => "color");
 
-	$options[] = array( "name" => "Header Color",
+	$options[] = array( "name" => "Title Color",
 						"desc" => "Color of the text on header.",
-						"id" => "pantomime_header_color",
-						"std" => "#FFFFFF",
+						"id" => "pantomime_title_color",
+						"std" => "#000000",
 						"type" => "color");
-
-	$options[] = array( "name" => "Header Color Hover",
-						"desc" => "Color of the hovered link on header.",
-						"id" => "pantomime_header_hover",
+        
+	$options[] = array( "name" => "Content Link Color",
+						"desc" => "Content's link color. Content's link will use this color.",
+						"id" => "pantomime_content_link_color",
 						"std" => "#AFAFAF",
 						"type" => "color");
+
 	
 	$options[] = array( "name" => "Typography",
 						"type" => "heading");
