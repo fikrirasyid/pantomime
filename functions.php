@@ -139,7 +139,12 @@ function pantomime_sitename(){
 function pantomime_content(){
 	?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <h2 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+		<?php if( is_single() ): ?>
+                <h1 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+		<?php else: ?>
+                <h2 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>		
+		<?php endif;?>
+
                 <p class="meta">
                     <?php _e( 'Written by', 'pantomime' ); ?> <span class="fn"><?php the_author_link(); ?></span>
                     <?php _e( 'on ', 'pantomime' ); ?> <span class="date"><?php the_date(); ?></span>
