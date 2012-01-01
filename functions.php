@@ -244,6 +244,23 @@ add_action('pantomime_after_article', 'pantomime_comment', 50);
 
 
 
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Register Sidebar
+ * 
+ */
+function pantomime_register_sidebar(){
+	register_sidebar( array(
+		'name' => __( 'Main Sidebar', 'pantomime' ),
+		'id' => 'main-sidebar',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
+	) );	
+}
+add_action( 'widgets_init', 'pantomime_register_sidebar' );
+
+
 /*
  * ------------------------------------------------------------------------------------------------------------------------
  * Footer Credit

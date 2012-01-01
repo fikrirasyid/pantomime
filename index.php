@@ -19,8 +19,8 @@
                 <section>
                     <?php get_template_part( 'loop', 'index' ); ?>
                 </section>
-                <aside>
-                    This is aside
+                <aside class="emboss widget-wrap">
+                    <ul id="sidebar-main"><?php dynamic_sidebar( 'main-sidebar' ); ?></ul>
                 </aside>
             </div><!-- .wrap.clearfix -->        
 	</div>

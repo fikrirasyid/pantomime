@@ -437,7 +437,6 @@ header .wrap{
     float:left;
     width:280px;
     padding:20px 40px;
-    margin:40px 0;
     background:#efefef;
 }
 
@@ -589,6 +588,33 @@ article .meta{
 .form-allowed-tags{
     font-size:12px;
 }
+
+
+
+
+/* =============================================================================
+   Main Sidebar
+   ========================================================================== */
+#sidebar-main{
+
+}
+
+.widget-wrap ul{
+    padding:0;
+}
+
+.widget-wrap li{
+    list-style:none;
+}
+
+.widget-wrap .widget{
+    margin-bottom:20px;
+}
+
+.widget-wrap .widgettitle{
+    margin:0;
+}
+
 
 /* =============================================================================
    Footer
