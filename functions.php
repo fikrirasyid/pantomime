@@ -301,28 +301,28 @@ function pantomime_color_scheme(){ ?>
 	<style type="text/css">
 		/* Link */
 		a{
-		    color:<?php echo of_get_option( 'pantomime_link_color', '#666666' ); ?> !important;
+		    color:<?php echo of_get_option( 'pantomime_link_color', '#666666' ); ?>;
 		}
 		
 		a:hover,
 		article a:hover{
-		    color:<?php echo of_get_option( 'pantomime_link_color_hover', '#BD0000' ); ?> !important;
+		    color:<?php echo of_get_option( 'pantomime_link_color_hover', '#BD0000' ); ?>;
 		}
 		
 		.title,
 		.title a{
-		    color:<?php echo of_get_option( 'pantomime_title_color', '#000000' ); ?> !important;
+		    color:<?php echo of_get_option( 'pantomime_title_color', '#000000' ); ?>;
 		}
 		
 		.meta a,
 		.content a{
-		    color:<?php echo of_get_option( 'pantomime_content_link_color', '#AFAFAF' ); ?> !important;
+		    color:<?php echo of_get_option( 'pantomime_content_link_color', '#AFAFAF' ); ?>;
 		}	
 	</style>
 	
 	<?php
 }
-add_action('wp_head', 'pantomime_color_scheme', 6);
+add_action('wp_head', 'pantomime_color_scheme', 8);
 
 
 
@@ -428,6 +428,29 @@ function pantomime_content(){
 
 /*
  * ------------------------------------------------------------------------------------------------------------------------
+ * Custom Text / Anything Before & After Content on Single View
+ * 
+ */
+function pantomime_custom_text_before_content(){
+	if ( is_single() ) :
+		echo of_get_option( 'pantomime_before_content', '' );
+	endif;
+}
+add_action( 'pantomime_before_content', 'pantomime_custom_text_before_content', 5); 
+
+function pantomime_custom_text_after_content(){
+	if ( is_single() ) :
+		echo of_get_option( 'pantomime_after_content', '' );	
+	endif;
+}
+add_action( 'pantomime_after_content', 'pantomime_custom_text_after_content', 5); 
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
  * Share Buttons
  * 
  */
@@ -461,7 +484,7 @@ function pantomime_share_buttons(){
 	<?php
 	endif;
 }
-add_action('pantomime_after_content', 'pantomime_share_buttons');
+add_action('pantomime_after_content', 'pantomime_share_buttons', 10);
 
 
 
