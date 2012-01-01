@@ -129,11 +129,6 @@ register_default_headers( array(
 			'url' => '%s/images/headers/dslr.jpg',
 			'thumbnail_url' => '%s/images/headers/dslr-thumb.jpg',
 			'description' => __( 'DSLR', 'pantomime' )
-		),
-		'photographer' => array(
-			'url' => '%s/images/headers/photographer.jpg',
-			'thumbnail_url' => '%s/images/headers/photographer-thumb.jpg',
-			'description' => __( 'Photographer', 'pantomime' )
 		)
 	) );
 
