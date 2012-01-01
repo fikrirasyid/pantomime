@@ -20,6 +20,129 @@ if ( !function_exists( 'optionsframework_init' ) ) {
 
 /*
  * ------------------------------------------------------------------------------------------------------------------------
+ * WordPress Native Custom Image Header
+ *
+ */
+function pantomime_custom_image_header(){
+	define( 'HEADER_TEXTCOLOR', 'FFFFFF' );
+	define( 'HEADER_IMAGE', '' ); // Leaving empty for random image rotation.
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'pantomime_header_image_width', 960 ) );
+	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'pantomime_header_image_height', 400 ) );
+	add_custom_image_header( 'pantomime_header_style', 'pantomime_admin_header_style', 'pantomime_admin_header_image' );	
+}
+add_action('after_setup_theme', 'pantomime_custom_image_header', 5); 
+
+function pantomime_header_style(){
+	?>
+	<style type="text/css">
+		header .wrap{
+			background: url('<?php echo get_header_image(); ?>');			
+		}
+		<?php if ( 'blank' == get_header_textcolor() ) : ?>
+		#sitename-wrap{
+			display:none;
+		}
+		<?php elseif ( HEADER_TEXTCOLOR != get_header_textcolor() ) : ?>
+		#sitename-wrap,
+		#sitename-wrap a{
+			color: #<?php echo get_header_textcolor(); ?> !important;
+		}
+		<?php endif; ?>		
+	</style>
+	<?php
+}
+
+function pantomime_admin_header_style(){
+	?>
+	<style type="text/css">
+
+	#sitename-wrap{
+	    width:400px;
+	    margin:150px 40px;
+	    float:left;
+	    font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	
+	#pantomime-title,
+	#sitename-wrap p{
+	    margin:0; padding:0;
+	    float:left; width:100%;
+	    text-shadow:0 -1px 0 #000;
+	}
+	
+	#pantomime-title{
+	    font-weight:bold;
+	    font-size:60px;
+	    line-height:1;
+	}
+	
+	#sitename-wrap p{
+	    font-size:20px;
+	}
+	
+	#sitename-wrap,
+	#pantomime-title{
+	    color:#fff;
+	}
+	
+	.appearance_page_custom-header #pantomime-header{
+		display:block;
+		width:960px; height:400px;
+		background:url('<?php echo get_header_image(); ?>');
+	}
+	
+	<?php if ( 'blank' == get_header_textcolor() ) : ?>
+	#sitename-wrap{
+		display:none;
+	}
+	<?php elseif ( HEADER_TEXTCOLOR != get_header_textcolor() ) : ?>
+	#pantomime-header #sitename-wrap,
+	#pantomime-title{
+		color: #<?php echo get_header_textcolor(); ?> !important;
+	}
+	<?php endif; ?>			
+	</style>
+<?php
+}
+
+function pantomime_admin_header_image(){
+	?>
+	
+	<div id="pantomime-header">
+		<div id="sitename-wrap">
+			<h2 id="pantomime-title"><?php bloginfo('name'); ?></h2>
+			<p><?php bloginfo('description'); ?></p>
+		</div>
+	</div>
+	
+	<?php
+	
+}
+
+register_default_headers( array(
+		'dancers' => array(
+			'url' => '%s/images/headers/dancers.jpg',
+			'thumbnail_url' => '%s/images/headers/dancers-thumb.jpg',
+			'description' => __( 'Dancers', 'pantomime' )
+		),
+		'dslr' => array(
+			'url' => '%s/images/headers/dslr.jpg',
+			'thumbnail_url' => '%s/images/headers/dslr-thumb.jpg',
+			'description' => __( 'DSLR', 'pantomime' )
+		),
+		'photographer' => array(
+			'url' => '%s/images/headers/photographer.jpg',
+			'thumbnail_url' => '%s/images/headers/photographer-thumb.jpg',
+			'description' => __( 'Photographer', 'pantomime' )
+		)
+	) );
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
  * Registering Custom Menus
  *
  */
@@ -146,21 +269,20 @@ add_action('wp_head', 'pantomime_javascript', 10);
  * 
  */
 function pantomime_sitename(){
-    if (is_home()){
-        echo '
-		<div id="sitename-wrap">
-			<h1 id="sitename">'. get_bloginfo( "name" ) .'</h1>
+	if (is_home()){
+		$heading_tag = 'h1';
+		$copy = get_bloginfo( "name" );	
+	} else {
+		$heading_tag = 'h2';
+		$copy = '<a href="'. get_bloginfo( "url" ) .'" class="emboss-dark">'. get_bloginfo( "name" ) .'</a>';
+	}
+
+	echo '
+		<div id="sitename-wrap" class="emboss-dark">
+			<'. $heading_tag .' id="sitename">'. $copy .'</'. $heading_tag .'>
 			<p>'. get_bloginfo( "description" ) .'</p>
 		</div>
 	';
-    } else {
-        echo '
-		<div id="sitename-wrap">
-			<h2 id="sitename"><a href="'. get_bloginfo( "url" ) .'">'. get_bloginfo( "name" ) .'</a></h2>
-			<p>'. get_bloginfo( "description" ) .'</p>
-		</div>
-	';
-    }
 }
 
 
