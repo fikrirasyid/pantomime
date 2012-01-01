@@ -315,7 +315,8 @@ function pantomime_color_scheme(){ ?>
 		}
 		
 		.meta a,
-		.content a{
+		.content a,
+		#archive-title span{
 		    color:<?php echo of_get_option( 'pantomime_content_link_color', '#AFAFAF' ); ?>;
 		}	
 	</style>
@@ -420,6 +421,28 @@ function pantomime_content(){
         </article>	
 	<?
 	do_action('pantomime_after_article');
+}
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Custom title for different page type
+ * 
+ */
+function pantomime_template_title($s){
+	if (is_category()) { ?>
+		<h1 id="archive-title"><?php _e( 'Posts categorized into ', 'pantomime' ); ?> <span><?php echo single_cat_title(); ?></span> :</h1>			
+	<?php } elseif (is_tag()) { ?>
+		<h1 id="archive-title"><?php _e( 'Posts tagged with ', 'pantomime' ); ?> <span><?php echo single_tag_title(); ?></span> :</h1>
+	<?php } elseif (is_search()) { ?>
+		<h1 id="archive-title"><?php _e( 'Search results for ', 'pantomime' ); ?> <span><?php echo $s ?></span> :</h1>
+	<?php } elseif (is_archive()  ) { ?>
+		<h1 id="archive-title"><?php _e( 'Posts published on', 'pantomime' ); ?> <span><?php wp_title(''); ?></span></h1>
+	<?php }
+
 }
 
 

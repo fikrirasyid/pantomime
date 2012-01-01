@@ -568,6 +568,17 @@ nav .menu ul ul{
 /* =============================================================================
    Content Styling
    ========================================================================== */
+#archive-title{
+    border-bottom:1px solid #dfdfdf;
+    font-size:16px;
+    padding:0 0 10px;
+    text-transform:uppercase;
+}
+
+#archive-title span{
+    color:#AFAFAF;
+}
+
 article{
     border-bottom:1px solid #dfdfdf;
     padding:0 0 30px;

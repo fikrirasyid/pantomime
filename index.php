@@ -23,6 +23,7 @@
             <div class="wrap clearfix">
                 <section>
                     <?php
+                        pantomime_template_title($s);
                         get_template_part( 'loop', 'index' );
                         pagenavi();
                     ?>
