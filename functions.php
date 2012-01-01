@@ -320,6 +320,48 @@ function pantomime_content(){
 
 
 
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Share Buttons
+ * 
+ */
+function pantomime_share_buttons(){
+	if ( is_single() ) :
+	?>
+	<div class="share-buttons clearfix">
+		<div class="item">
+			<strong><?php _e('Share This: ', 'pantomime'); ?></strong>
+		</div>
+		<div class="item">
+			<iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo $share_link; ?>&amp;layout=button_count&amp;show_faces=true&amp;width=95&amp;action=like&amp;font&amp;colorscheme=light&amp;height=20" scrolling="no" frameborder="0" style="border:none;" allowTransparency="true"></iframe>                			
+		</div>
+		<div class="item">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>                
+		</div>
+		<div class="item">
+			<!-- Place this tag where you want the +1 button to render -->
+			<g:plusone annotation="inline" width="50"></g:plusone>
+			
+			<!-- Place this render call where appropriate -->
+			<script type="text/javascript">
+			(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			})();
+			</script>                   
+		</div>		
+	</div>
+	<?php
+	endif;
+}
+add_action('pantomime_after_content', 'pantomime_share_buttons');
+
+
+
+
+
 /*
  * ------------------------------------------------------------------------------------------------------------------------
  * Author Box on article page

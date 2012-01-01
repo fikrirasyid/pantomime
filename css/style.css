@@ -602,6 +602,20 @@ article .meta{
     margin:0 10px 10px 0;
 }
 
+/* Share Buttons */
+.share-buttons{
+    padding:10px 10px 5px;
+    border-top:1px solid #cfcfcf;
+    background:#efefef;
+}
+
+.share-buttons .item{
+    float:left;
+    width:90px;
+    height:30px;
+    margin:0 5px 0 0;
+}
+
 
 
 
