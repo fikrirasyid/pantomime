@@ -421,6 +421,7 @@ article a:hover{
 header{
     float:left;
     width:100%;
+    margin-top:20px;
 }
 
 header .wrap{
@@ -467,6 +468,11 @@ header .wrap{
 /* =============================================================================
    NAV
    ========================================================================== */
+nav{
+    float:left;
+    width:100%;
+}
+
 nav .wrap{
     margin-bottom:40px;
     background-color: #222222;
@@ -485,8 +491,10 @@ nav .wrap{
 }
 
 nav .menu{
-    padding:0 40px;
-    height:30px;
+    float:left;
+    width:880px;
+    padding:0 40px; margin:0;
+    height:45px;
     position:relative;
 }
 
