@@ -182,7 +182,12 @@ function pantomime_pagemeta(){
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="<?php bloginfo('atom_url'); ?>" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+	
+	<?php if ( of_get_option( 'pantomime_favicon' ) == true && of_get_option( 'pantomime_favicon' ) != '' ) : ?>
+	<link rel="Shortcut Icon" href="<?php echo of_get_option( 'pantomime_favicon' ); ?>" type="image/x-icon" />	
+	<?php else: ?>
 	<link rel="Shortcut Icon" href="<?php bloginfo('template_url'); ?>/favicon.ico" type="image/x-icon" />
+	<?php endif; ?>
 	
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) { wp_enqueue_script( 'comment-reply' );}
 
