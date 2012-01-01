@@ -14,6 +14,11 @@
                 <?php pantomime_sitename(); ?>
             </div><!-- .wrap.clearfix -->
 	</header>
+        <nav class="emboss-dark">
+            <div class="wrap clearfix">
+                <?php wp_nav_menu(array('theme_location' => 'main_nav')); ?>
+            </div><!-- .wrap.clearfix -->
+        </nav>
 	<div id="main" role="main">
             <div class="wrap clearfix">
                 <section>

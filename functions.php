@@ -20,6 +20,27 @@ if ( !function_exists( 'optionsframework_init' ) ) {
 
 /*
  * ------------------------------------------------------------------------------------------------------------------------
+ * Registering Custom Menus
+ *
+ */
+function pantomime_register_menu(){
+	if ( function_exists( 'register_nav_menus' ) ) {
+		register_nav_menus(
+			array(
+			  'main_nav' => 'Main Navigation'
+			)
+		);
+	}	
+}
+add_action( 'after_setup_theme', 'pantomime_register_menu' );
+
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
  * Page Meta
  * 
  */
@@ -93,9 +114,24 @@ add_action('wp_head', 'pantomime_stylesheet', 5);
  * 
  */
 function pantomime_javascript(){
+	/*
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', array(), false, false );
-	wp_enqueue_script( 'jquery' );	
+	*/
+	wp_enqueue_script( 'jquery' );
+	
+	?>
+	<script type="text/javascript">
+		//<![CDATA[
+			jQuery(document).ready(function($){
+				$('nav li').hover(
+					function(){ $(this).addClass('hovered').children('ul').fadeIn(); },
+					function(){ $(this).removeClass('hovered').children('ul').fadeOut(); }
+				);
+			});
+		//]]>
+	</script>
+	<?php
 }
 add_action('wp_head', 'pantomime_javascript', 10);
 
