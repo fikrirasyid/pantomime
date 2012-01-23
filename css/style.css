@@ -633,6 +633,22 @@ article .meta{
     margin:0 0 20px 20px;
 }
 
+/* Table Styling */
+.content thead {
+    background: #EFEFEF;
+}
+
+.content table {
+    width: 100%;
+    margin: 0 0 20px;
+    font-size: 95%;
+}
+
+.content tr td {
+    padding: 5px 10px;
+    border: 1px solid #CFCFCF;
+}
+
 /* Author Box */
 #author-box{
     background:#efefef;
