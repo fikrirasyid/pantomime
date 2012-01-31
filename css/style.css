@@ -605,18 +605,6 @@ article .meta{
     margin:0 0 20px;
 }
 
-.content img{
-    background:#fff;
-    border:1px solid #dfdfdf;
-    padding:10px;
-}
-
-.content img.wp-smiley{
-    background:none;
-    border:none;
-    padding:0;
-}
-
 .content blockquote{
     border-left:3px solid #999;
     margin:0 0 20px;
@@ -632,6 +620,42 @@ article .meta{
 .content .alignright{
     margin:0 0 20px 20px;
 }
+
+/* IMG & Caption Styling */
+.content img{
+    background:#fff;
+    border:1px solid #dfdfdf;
+    padding:10px;
+}
+
+.content img.wp-smiley{
+    background:none;
+    border:none;
+    padding:0;
+}
+
+.content .wp-caption img{
+    border:none;
+    padding:0;
+    background:transparent;
+    margin:4px 0 4px 5px;
+    display:block;
+}
+
+.content .wp-caption-text{
+    font-size: 12px;
+    text-align: center;
+    margin:0 4px;
+    line-height:1.2;
+}
+
+.content .wp-caption {
+    border: 1px solid #DFDFDF;
+    background:#FFF;
+    padding:5px;
+    margin-bottom:20px;
+}
+
 
 /* Table Styling */
 .content thead {

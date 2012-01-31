@@ -228,6 +228,9 @@ function pantomime_stylesheet(){
 add_action('wp_head', 'pantomime_stylesheet', 5);
 
 
+// Adding stylesheet for content editor
+add_editor_style('/css/pantomime-editor-style.css');
+
 
 
 

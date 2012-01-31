@@ -1,0 +1,181 @@
+html .mceContentBody {
+				max-width: 560px;
+}
+
+*, body{ 
+	   color: #333;
+    font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+
+}
+
+body h1,h2,h3,h4,h5,h6 {
+				font-weight:bold;
+}
+
+a{
+    color:#666;
+    text-decoration:none;
+}
+
+/* These specific stylings are taken from twentyeleven theme - start.*/
+.mceContentBody blockquote,
+.mceContentBody blockquote p {
+				font-family: Georgia, "Bitstream Charter", serif !important;
+				font-style: italic !important;
+				font-weight: normal;
+				margin: 0 3em;
+}
+
+.mceContentBody blockquote em,
+.mceContentBody blockquote i,
+.mceContentBody blockquote cite {
+				font-style: normal;
+}
+
+.mceContentBody blockquote cite {
+				color: #666;
+				font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-weight: 300;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+}
+
+pre {
+				background: #f4f4f4;
+				font: 13px "Courier 10 Pitch", Courier, monospace;
+				line-height: 1.5;
+				margin-bottom: 1.625em;
+				padding: 0.75em 1.625em;
+}
+
+code, kbd, code var {
+				font: 13px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+abbr, acronym, dfn {
+				border-bottom: 1px dotted #666;
+				cursor: help;
+}
+
+address {
+display: block;
+margin: 0 0 1.625em;
+}
+
+del {
+				color: #333;
+}
+
+ins {
+				background: #fff9c0;
+				border: none;
+				color: #333;
+				text-decoration: none;
+}
+
+sup,
+sub {
+				font-size: 10px;
+				height: 0;
+				line-height: 1;
+				position: relative;
+				vertical-align: baseline;
+}
+
+sup {
+				bottom: 1ex;
+}
+sub {
+				top: .5ex;
+}
+
+input[type=text],
+textarea {
+				background: #fafafa;
+				-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+				-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+				box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+				border: 1px solid #ddd;
+				color: #888;
+}
+
+input[type=text]:focus,
+textarea:focus {
+				color: #333;
+}
+
+/* These specific stylings are taken from twentyeleven theme - end.*/
+
+p{
+    margin:0 0 20px;
+}
+
+blockquote{
+    border-left:3px solid #999;
+    margin:0 0 20px;
+    padding:20px 20px 5px 20px;
+    font-style:italic;
+    background:#efefef;
+}
+
+.alignleft{
+    margin:0 20px 20px 0;
+}
+
+.alignright{
+    margin:0 0 20px 20px;
+}
+
+/* IMG & Caption Styling */
+img{
+    background:#fff;
+    border:1px solid #dfdfdf;
+    padding:10px;
+}
+
+img.wp-smiley{
+    background:none;
+    border:none;
+    padding:0;
+}
+
+.wp-caption img{
+    border:none;
+    padding:0;
+    background:transparent;
+    margin:4px 0 4px 5px;
+    display:block;
+}
+
+.wp-caption-text{
+    font-size: 12px;
+    text-align: center;
+    margin:0 4px;
+    line-height:1.2;
+}
+
+.wp-caption {
+    border: 1px solid #DFDFDF;
+    background:#FFF;
+    padding:5px;
+    margin-bottom:20px;
+}
+
+
+/* Table Styling */
+thead {
+    background: #EFEFEF;
+}
+
+table {
+    width: 100%;
+    margin: 0 0 20px;
+    font-size: 95%;
+}
+
+tr td {
+    padding: 5px 10px;
+    border: 1px solid #CFCFCF;
+}
