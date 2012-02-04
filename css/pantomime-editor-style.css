@@ -112,6 +112,14 @@ p{
     margin:0 0 20px;
 }
 
+strong{
+				font-weight:bold !important;
+}
+
+em{
+				font-style:italic;
+}
+
 blockquote{
     border-left:3px solid #999;
     margin:0 0 20px;

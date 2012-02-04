@@ -229,7 +229,7 @@ add_action('wp_head', 'pantomime_stylesheet', 5);
 
 
 // Adding stylesheet for content editor
-add_editor_style('/css/pantomime-editor-style.css');
+add_editor_style('/css/pantomime-editor-style.css?' . time());
 
 
 
@@ -803,3 +803,50 @@ function pantomime_num_queries(){
 	echo '</p>';
 }
 add_action('wp_footer', 'pantomime_num_queries', 20);
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * STYLE LOGIN SCREEN
+ *
+ * I left the screen plain white because I like it that way.
+ * Custom usage may modify this function.
+ * At least you don't need to find its selectors and properties. ;)
+ *
+ * Added by Fikri Rasyid (fikrirasyid@gmail.com) on 4 Feb 2012
+ * Last modified by Fikri Rasyid (fikrirasyid@gmail.com) on 4 Feb 2012
+ * 
+ */
+function pantomime_custom_login_style_script(){
+    ?>
+    
+    <style type="text/css">
+        body{
+            background:#FFF!important;
+            height:100%;
+            width:100%;
+            position:fixed;
+        }
+        
+        .login #nav a,
+		.login #backtoblog a {
+            color: #999 !important;
+            text-shadow:none;
+        }
+
+        .login #nav a:hover,
+		.login #backtoblog a:hover{
+				color:#960000 !important;
+		}
+        
+        .login h1 a{
+            cursor:pointer;
+        }   
+    </style>
+	
+    <?php		
+}
+add_action('login_head', 'pantomime_custom_login_style_script');
