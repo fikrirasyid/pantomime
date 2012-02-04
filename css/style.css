@@ -673,6 +673,15 @@ article .meta{
     border: 1px solid #CFCFCF;
 }
 
+/* Form Styling */
+.content input[type="text"],
+.content textarea{
+    border:1px solid #DFDFDF;
+    padding:6px 10px;
+    width:80%;
+    margin:5px 0 0 0;
+}
+
 /* Author Box */
 #author-box{
     background:#efefef;
