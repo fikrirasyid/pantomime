@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: One Column
+*/
+?>
+
 <?php get_header(); ?>
 	<div id="main" role="main">
             <div class="wrap clearfix">
@@ -8,9 +14,6 @@
                         pagenavi();
                     ?>
                 </section>
-                <aside class="emboss widget-wrap">
-                    <ul id="sidebar-main"><?php dynamic_sidebar( 'main-sidebar' ); ?></ul>
-                </aside>
             </div><!-- .wrap.clearfix -->        
 	</div>
 <?php get_footer(); ?>

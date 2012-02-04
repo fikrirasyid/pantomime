@@ -219,11 +219,19 @@ add_action('wp_head', 'pantomime_title', 3);
 /*
  * ------------------------------------------------------------------------------------------------------------------------
  * Default Stylesheet
+ *
+ * Added from Theme Init
+ * Last modified by Fikri Rasyid (fikrirasyid@gmail.com) on February 4, 2012
  * 
  */
 function pantomime_stylesheet(){
 	wp_register_style('pantomime-style', get_bloginfo('template_directory') . '/css/style.css', array(), false, 'screen');
-	wp_enqueue_style('pantomime-style');	
+	wp_register_style('pantomime-one-column-style', get_bloginfo('template_directory') . '/css/style-one-column.css', array(), false, 'screen');
+	
+	wp_enqueue_style('pantomime-style');
+	if (is_page_template( 'temp-one-column.php' )){
+			wp_enqueue_style('pantomime-one-column-style');		
+	}
 }
 add_action('wp_head', 'pantomime_stylesheet', 5);
 
