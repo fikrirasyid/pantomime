@@ -180,8 +180,19 @@ function optionsframework_options() {
 						"desc" => "Type custom message for closed comment form here.",
 						"id" => "pantomime_closed_comment_message",
 						"std" => "Sorry but we have decided to close the comment section for this post.",
-						"type" => "textarea"); 
+						"type" => "textarea");
+    
+	$options[] = array( "name" => "Activate Feedburner email subscription box?",
+						"desc" => "Tick this option if you want to show Feedburner email subscription box at the bottom of the content. Make sure that you have Feedburner account and your Feedburner ID",
+						"id" => "pantomime_feedburner_subscription_box_status",
+						"std" => "0",
+						"type" => "checkbox");    
 
+	$options[] = array( "name" => "Custom message for Feedburner email subscription box",
+						"desc" => "Type custom message for Feedburner Mail Subscription form here.",
+						"id" => "pantomime_feedburner_subscription_box_message",
+						"std" => "Type your email address and press the subscribe button. Whenever new content is published here, it will be delivered to your email address. Instantly.",
+						"type" => "textarea");
 
 	$options[] = array( "name" => "Ads",
 						"type" => "heading");

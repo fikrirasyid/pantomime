@@ -544,7 +544,43 @@ function pantomime_author_box(){
 	<?php
 	endif;
 }
-add_action('pantomime_after_article', 'pantomime_author_box', 10);	
+add_action('pantomime_after_article', 'pantomime_author_box', 10);
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Feedburner Subscription Box
+ * 
+ */
+function pantomime_feedburner_box(){
+		if ( is_single() ):
+				$status = of_get_option( 'pantomime_feedburner_subscription_box_status', '0' );
+				if ( $status == '1' ) :
+				?>
+				
+				<div id="feedburner-subscription" class="emboss">
+						<h4 class="section-title">Subscribe Through Email <small>- Powered by <a href="http://feedburner.google.com/" rel="nofollow">Feedburner</a></small></h4>
+						<div class="section">
+								<form id="feedburner-form" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo of_get_option( 'feedburner_id', '' ); ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+										<input type="text" name="email"/>
+										<input type="hidden" value="<?php echo of_get_option( 'feedburner_id', '' ); ?>" name="uri"/>
+										<input type="hidden" name="loc" value="en_US"/>
+										<input type="submit" value="Subscribe" />
+								</form>
+						</div>
+						<div class="section">
+								<p><?php echo of_get_option( 'pantomime_feedburner_subscription_box_message', 'Type your email address and press the subscribe button. Whenever new content is published here, it will be delivered to your email address. Instantly.' ); ?></p>
+						</div>
+				</div>
+				
+				<?php
+				endif;
+		endif;
+}
+add_action('pantomime_after_article', 'pantomime_feedburner_box', 10);
 
 
 

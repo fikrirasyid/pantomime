@@ -687,6 +687,7 @@ article .meta{
     background:#efefef;
     border:1px solid #cfcfcf;
     padding:0 20px;
+    margin:0 0 20px;
 }
 
 #author-box .avatar{
@@ -695,6 +696,19 @@ article .meta{
     border:1px solid #999;
     background:#fff;
     margin:0 10px 10px 0;
+}
+
+/* Feedburner Subscription Box */
+#feedburner-subscription{
+    padding:0 20px;
+    background:#fff7a3;
+    border:1px solid #b5b504;
+    margin:0 0 20px;
+}
+
+#feedburner-subscription input[type="text"]{
+    margin:0 10px 0 0;
+    width:75%;
 }
 
 /* Share Buttons */
