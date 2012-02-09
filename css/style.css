@@ -747,6 +747,15 @@ article .meta{
     margin-bottom:20px;
 }
 
+#comment-list .bypostauthor > .comment-wrap .comment-author{
+    background:#efefef;
+    border-top:1px solid #CFCFCF;
+}
+
+#comment-list .bypostauthor > .comment-wrap .comment-author:after{
+    content: ': post author';
+}
+
 #comment-list li ul{
     padding:0 0 0 70px;    
 }
@@ -788,7 +797,6 @@ article .meta{
 }
 
 .comment-author{
-    background:#fff;
     margin:0;
 }
 
