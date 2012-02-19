@@ -229,7 +229,7 @@ function pantomime_stylesheet(){
 	wp_register_style('pantomime-one-column-style', get_bloginfo('template_directory') . '/css/style-one-column.css', array(), false, 'screen');
 	
 	wp_enqueue_style('pantomime-style');
-	if (is_page_template( 'temp-one-column.php' )){
+	if ( is_page_template( 'temp-one-column.php' ) || is_page_template( 'temp-links.php' ) ){
 			wp_enqueue_style('pantomime-one-column-style');		
 	}
 }
@@ -413,15 +413,19 @@ function pantomime_content(){
                 <h1 class="title"><?php the_title(); ?></h1>
 		<?php else: ?>
                 <h2 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>		
-		<?php endif;?>
-
+		<?php endif;
+				if ( !is_page_template('temp-links.php') ) :
+		?>
                 <p class="meta">
                     <?php _e( 'Written by', 'pantomime' ); ?> <span class="fn"><?php the_author_link(); ?></span>
                     <?php _e( 'on ', 'pantomime' ); ?> <span class="date"><?php the_date(); ?></span>
                     <?php _e( 'filed under ', 'pantomime' ); ?> <span class="categories"><?php the_category(', '); ?></span>
                     <?php _e( 'and tagged with', 'pantomime' ); ?> <span class="tags"><?php the_tags(''); ?></span>
                 </p>
-		<?php do_action('pantomime_before_content')?>
+		<?php
+				endif;
+				do_action('pantomime_before_content');
+		?>
                 <div class="content"><?php the_content(__( 'Read More', 'pantomime' )); ?></div>
 		<?php do_action('pantomime_after_content'); ?>
         </article>	
@@ -581,6 +585,30 @@ function pantomime_feedburner_box(){
 		endif;
 }
 add_action('pantomime_after_article', 'pantomime_feedburner_box', 10);
+
+
+
+
+
+/*
+ * ------------------------------------------------------------------------------------------------------------------------
+ * Links Page Blogroll
+ * 
+ */
+function pantomime_links_page_content(){
+		if (is_page_template( 'temp-links.php' )){
+				$bookmarks_args = array(
+						'title_before' => '<h3>',
+						'title_after' => '</h3>',
+						'category_before' => '',
+						'category_after' => ''
+				);
+				echo '<div id="bookmarks">';
+				wp_list_bookmarks($bookmarks_args);
+				echo '</div><!-- bookmarks -->';
+		}
+}
+add_action('pantomime_after_content', 'pantomime_links_page_content', 10);
 
 
 
